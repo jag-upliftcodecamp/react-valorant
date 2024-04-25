@@ -44,5 +44,3 @@ function placeOrder() {
   // 4️⃣ Implement the place order
 }
 
-
-for (let i = 0; i < 10;)
