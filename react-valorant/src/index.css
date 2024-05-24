@@ -24,6 +24,7 @@ a:hover {
 
 body {
   margin: 0;
+  background-color: rgb(187, 186, 186);
 }
 
 h1 {
@@ -78,4 +79,25 @@ button:focus-visible {
 .agentContainer{
   border: 2rem solid;
   padding: 5px;
+  font-size: 2rem;
+}
+
+.agentPageDescription {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.agentPortrait img {
+  width: 100%;
+}
+
+
+.agentRole {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+
+.abilities {
+  display: flex;
+  justify-content: space-between;
 }
