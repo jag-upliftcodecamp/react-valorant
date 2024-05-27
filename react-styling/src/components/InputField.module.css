@@ -1,0 +1,11 @@
+.input{
+    width: auto;
+    height: 3rem;
+    font-size: 1.6rem;
+    padding:  1rem;
+    border: 2px solid white;
+    background: transparent;
+    border-radius: 12px;
+    color: white;
+    display: block;
+}
