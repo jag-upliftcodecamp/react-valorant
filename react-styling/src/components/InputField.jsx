@@ -1,6 +1,6 @@
 import style from './InputField.module.css';
 
-function InputField({ placeholder, type, value }) {
+function InputField({ placeholder, type, value, onChange }) {
   return (
     <>
       <input
@@ -8,6 +8,7 @@ function InputField({ placeholder, type, value }) {
         type={type}
         placeholder={placeholder}
         value={value}
+        onChange={onChange}
       />
     </>
   );
