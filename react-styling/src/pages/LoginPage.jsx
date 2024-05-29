@@ -5,12 +5,16 @@ import RedirectBtn from '../components/RedirectBtn';
 import style from './SignUpPage.module.css';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import ProfileContext from '../contexts/ProfileContext';
 
 function LoginPage() {
   // STATES: email, password
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+
+  const { setDisplayName } = useContext(ProfileContext);
 
   // Handle the submission
   const handleSubmit = async (e) => {
@@ -29,6 +33,7 @@ function LoginPage() {
     );
     const basicJson = await basicResponse.json();
     console.log('Basic JSON: ', basicJson);
+    setDisplayName(basicJson.displayName);
     navigate('/profile');
   };
 

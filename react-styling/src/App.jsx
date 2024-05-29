@@ -1,3 +1,4 @@
+import ProfileProvider from './contexts/ProfileProvider';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
@@ -12,7 +13,7 @@ function App() {
       // HomePage
     },
     {
-      path: '/register',
+      path: '/signup',
       element: <SignUpPage />,
       // Sign up
     },
@@ -30,7 +31,9 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={router} />
+      <ProfileProvider>
+        <RouterProvider router={router} />
+      </ProfileProvider>
     </>
   );
 }
