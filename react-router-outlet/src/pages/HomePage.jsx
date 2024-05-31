@@ -1,3 +1,4 @@
+import Header from '../components/Header';
 import LinkBtn from '../components/LinkBtn';
 import SubmitBtn from '../components/SubmitBtn';
 

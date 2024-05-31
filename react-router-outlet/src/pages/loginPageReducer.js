@@ -38,8 +38,9 @@ function loginPageReducer(state, action) {
   }
 }
 
-export default loginPageReducer;
-// const useLoginPageReducer = useReducer(loginPageReducer, { email: '', password: '' });
+function useLoginPageReducer() {
+  return useReducer(loginPageReducer, { email: '', password: '' });
+}
 
-// export default useLoginPageReducer;
+export default useLoginPageReducer;
 

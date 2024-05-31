@@ -6,20 +6,20 @@ import style from './SignUpPage.module.css';
 import { useReducer, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import ProfileContext from '../contexts/ProfileContext';
-import loginPageReducer from './loginPageReducer';
+import Header from '../components/Header';
+import useLoginPageReducer from './loginPageReducer';
+import { useProfileContext } from '../contexts/ProfileContext';
 
 function LoginPage() {
   const navigate = useNavigate();
-  const { setDisplayName } = useContext(ProfileContext);
+
+  // Instead of using useContext()
+  const { setDisplayName } = useProfileContext(); 
   // STATES: email, password
   // const [email, setEmail] = useState('');
   // const [password, setPassword] = useState('');
 
-  const [state, dispatch] = useReducer(loginPageReducer, {
-    email: '',
-    password: '',
-  });
+  const [state, dispatch] = useLoginPageReducer();
   // Extract the needed state (email &) from state
   const { email, password } = state;
 

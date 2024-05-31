@@ -5,6 +5,7 @@ import RedirectBtn from '../components/RedirectBtn';
 import SubmitBtn from '../components/SubmitBtn';
 import style from './SignUpPage.module.css';
 import { useState } from 'react';
+import Header from '../components/Header';
 
 function SignUpPage() {
   // CREATE states: fullName, email, password, confirmPassword
