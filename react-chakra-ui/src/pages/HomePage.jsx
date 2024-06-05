@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ProductItem from '../components/ProductItem';
 import { SimpleGrid } from '@chakra-ui/react';
+import StoreContext from '../contexts/StoreContext';
 
 function HomePage() {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
+  const { state, dispatch } = useContext(StoreContext);
+  const { products } = state; // Extract product from the state
 
   const fetchProducts = async () => {
     // 1. Get the response only
@@ -14,7 +17,11 @@ function HomePage() {
 
     console.log('JSON: ', json);
 
-    setProducts(json);
+    // Set the products to the StoreContext
+    dispatch({
+      type: 'SET_PRODUCTS',
+      payload: json,
+    });
 
     // return json;
   };
@@ -29,6 +36,7 @@ function HomePage() {
         {products.map((product) => (
           <ProductItem
             key={product.id}
+            id={product.id}
             title={product.title}
             price={product.price}
             images={product.image}

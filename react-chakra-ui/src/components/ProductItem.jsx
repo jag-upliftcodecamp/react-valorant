@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import style from './ProductItem.module.css';
 import {
   AspectRatio,
@@ -13,14 +14,30 @@ import {
   ButtonGroup,
   Button,
 } from '@chakra-ui/react';
+import StoreContext from '../contexts/StoreContext';
 
-function ProductItem({ title, price, images, description }) {
+function ProductItem({ title, price, images, description, id }) {
   const defaultImage = 'https://placehold.co/1800.png';
   let image = images;
+  const { dispatch } = useContext(StoreContext);
 
   // state: check if the images[0] is valid or not
   const onImageError = (e) => {
     image = defaultImage;
+  };
+
+  const onAddToCart = () => {
+    // DISPATCH type: 'ADD_TO_CART', payload: product object
+    dispatch({
+      type: 'ADD_TO_CART',
+      payload: {
+        title,
+        price,
+        images,
+        description,
+        id,
+      },
+    });
   };
 
   return (
@@ -48,7 +65,7 @@ function ProductItem({ title, price, images, description }) {
           <Button variant="solid" colorScheme="blue">
             Buy now
           </Button>
-          <Button variant="ghost" colorScheme="blue">
+          <Button variant="ghost" colorScheme="blue" onClick={onAddToCart}>
             Add to cart
           </Button>
         </ButtonGroup>
