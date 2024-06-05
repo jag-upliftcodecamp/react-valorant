@@ -19,6 +19,10 @@ function App() {
     // return json;
   };
 
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <>
       <div className={style.productList}>
