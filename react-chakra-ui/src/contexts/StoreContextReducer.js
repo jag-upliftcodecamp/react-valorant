@@ -1,5 +1,20 @@
 import { useReducer } from "react";
 
+function filterProducts(products, query) {
+  // Filter all product's title from query
+  // Filter all product's category from query
+  const filteredItems = products.filter((product) => {
+    const queryLowerCase = query.toLowerCase();
+
+    return (
+      product.title.toLowerCase().includes(queryLowerCase) ||
+      product.category.toLowerCase().includes(queryLowerCase)
+    );
+  });
+
+  return filteredItems;
+}
+
 function StoreContextReducer(state, action) {
   // STATES:
   // - carts: []
@@ -31,7 +46,16 @@ function StoreContextReducer(state, action) {
     case "SET_PRODUCTS":
       return {
         ...state, // Spread all previous state,
-        products: action.payload,
+        products: action.payload, // Products that shown in the Frontend
+        __originalProducts: action.payload, // The actual list of products
+      };
+
+    // CASE: 'SEARCH', filter products from action.payload (search query)
+    case "SEARCH":
+      return {
+        ...state,
+        // Filter the actual list of products
+        products: filterProducts(state.__originalProducts, action.payload),
       };
 
     // DEFAULT: return state
@@ -40,10 +64,12 @@ function StoreContextReducer(state, action) {
   }
 }
 
+// Create a custom hook for the reducer
 const useStoreContextReducer = () => {
   return useReducer(StoreContextReducer, {
     carts: [],
     products: [],
+    __originalProducts: [],
   });
 };
 

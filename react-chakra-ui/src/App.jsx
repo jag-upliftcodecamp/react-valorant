@@ -9,6 +9,7 @@ function App() {
       path: '/',
       element: <HomePage />,
     },
+    // You can add nested routes or other pages
   ]);
 
   return (

@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import style from './ProductItem.module.css';
 import {
   AspectRatio,
   Card,
@@ -44,6 +43,7 @@ function ProductItem({ title, price, images, description, id }) {
     <Card maxW="sm">
       <CardBody>
         <AspectRatio ratio={1}>
+          {/* Chakra UI has a fallbackSrc incase an error */}
           <Image
             src={image}
             alt="product-item"
